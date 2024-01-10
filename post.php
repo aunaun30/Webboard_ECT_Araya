@@ -8,10 +8,16 @@
 <body>
     <h1 style="text-align: center;">Webboard GG</h1>
     <hr>
-    <div align="center">
-        ต้องการดูกระทู้หมายเลข 3<br>
-    </div>
-    <br>
+    <center>
+        ต้องการดูกระทู้หมายเลข <?php echo $_GET['id']; 
+        $i = $_GET['id'];
+        if (($i % 2) == 0)
+            echo "<br> เป็นกระทู้หมายเลขคู่";
+        else
+            echo "<br> เป็นกระทู้หมายเลขคี่";
+        ?>
+    </center>
+<br>
 <table style="border:2px solid black; width:40%" align="center">
         <tr><td colspan="2" style="background-color: #6cd2fe;">แสดงความคิดเห็น</td></tr>
         <tr>
@@ -24,7 +30,7 @@
 </table>
     <br>
     <center>
-    <a href="index.html">กลับไปหน้าหลัก</a>
+    <a href="index.php">กลับไปหน้าหลัก</a>
     </center>
 </body>
 </html>
