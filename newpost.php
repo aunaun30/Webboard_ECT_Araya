@@ -14,7 +14,7 @@ if (!isset($_SESSION['id'])){
     <title>Newpost</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Webboard KakKak</h1>
+    <h1 style="text-align: center;">Webboard GG</h1>
     <hr>
     ผู้ใช้ : <?php echo $_SESSION['username']; ?>
     <form action="#">
