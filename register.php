@@ -83,9 +83,8 @@ if (isset($_SESSION["id"])) {
                     </div>
                 </div>
             </div>
-
+                <div class="col-lg-3 col-md-2 col-sm-1"></div>
         </div>
     </div>
 </body>
-
 </html>
