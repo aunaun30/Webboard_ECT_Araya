@@ -39,9 +39,16 @@ if (isset($_SESSION['id'])){
                             <label class="form-label">Login:</label>
                             <input type="text" name="login" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label class="form-label">Password:</label>
-                            <input type="password" name="pwd" class="form-control">
+                            <div class="input-group">
+                                <input type="password" id="pwd" name="pwd" class="form-control">
+                                <span class="input-group-text" onclick="password_show_hide()">
+                                    <i class="bi bi-eye" id="show_eye"></i>
+                                    <i class="bi bi-eye-slash d-none" id="hide_eye"></i>
+                                </span>
+                            </div>
+                            
                         </div>
                         <div class="d-flex justify-content-center mt-3">
                             <button type="submit" class="btn btn-secondary btn-sm me-2">Login</button>
@@ -57,5 +64,22 @@ if (isset($_SESSION['id'])){
         ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a>
     </div>
     </div>
+    <script>
+        function password_show_hide(){
+            let x=document.getElementById("pwd");
+            let show_eye=document.getElementById("show_eye");
+            let hide_eye=document.getElementById("hide_eye");
+            hide_eye.classList.remove("d-none");
+            if(x.type==="password"){
+                x.type="text";
+                show_eye.style.display="none";
+                hide_eye.style.display="block";
+            }else{
+                x.type="password";
+                show_eye.style.display="block";
+                hide_eye.style.display="none";
+            }
+        }
+    </script>
 </body>
 </html>
