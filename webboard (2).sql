@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2024 at 11:09 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Apr 02, 2024 at 01:46 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -37,9 +37,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
+(0, 'เรื่องอื่นๆๆๆๆๆๆๆๆๆๆ'),
 (1, 'เรื่องทั่วไป'),
 (2, 'เรื่องเรียน'),
-(3, 'เรื่องกีฬา');
+(3, 'เรื่องกีฬา'),
+(4, 'เรื่องกิน');
 
 -- --------------------------------------------------------
 
@@ -49,19 +51,11 @@ INSERT INTO `category` (`id`, `name`) VALUES
 
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
-  `content` varchar(20148) NOT NULL,
+  `content` varchar(20148) COLLATE utf8_unicode_ci NOT NULL,
   `post_date` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `comment`
---
-
-INSERT INTO `comment` (`id`, `content`, `post_date`, `user_id`, `post_id`) VALUES
-(1, 'สู้ สู้ ครับ ติดแน่นอน', '2024-03-06 15:13:00', 4, 1),
-(2, 'กินข้าว', '2024-03-06 17:06:28', 6, 2);
 
 -- --------------------------------------------------------
 
@@ -71,8 +65,8 @@ INSERT INTO `comment` (`id`, `content`, `post_date`, `user_id`, `post_id`) VALUE
 
 CREATE TABLE `post` (
   `id` int(11) NOT NULL,
-  `title` varchar(128) NOT NULL,
-  `content` varchar(2048) NOT NULL,
+  `title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(2048) COLLATE utf8_unicode_ci NOT NULL,
   `post_date` datetime NOT NULL,
   `cat_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
@@ -83,9 +77,11 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `content`, `post_date`, `cat_id`, `user_id`) VALUES
-(1, 'จะติด F มั้ยคะ', 'ไม่ทำงาน ไม่ส่งงาน ไม่มาเรียน', '2024-02-28 16:45:11', 1, 3),
-(2, 'กินอะไรดีเย็นนี้', 'อยากกินอะไรง่ายๆ แนะนำหน่อย', '2024-03-06 15:18:20', 1, 3),
-(3, 'พิมพ์ตามอาจารย์ไม่ทันเลย', 'มีใครพิมพ์โปรแกรมไม่ทันเหมือนผมบ้าง ไม่รู้ว่าผมพิมพ์ช้า หรือว่าอาจารย์สอนโครตเร็วเลย', '2024-03-06 15:38:24', 2, 6);
+(1, 'เย็นนี้กินอะไรดี', 'อยากกินอะไรง่ายๆ อร่อยๆ แนะนำหน่อยสิ', '2024-02-29 19:54:10', 1, 1),
+(2, 'ewfwf', 'wfefwfwefe', '2024-03-28 18:30:42', 1, 3),
+(3, 'wfwefq', 'q32e23', '2024-03-28 18:30:50', 2, 3),
+(4, 'กินอะไรดี', 'อร่อยๆๆ หิวววว อย่างเช่น ข้าวผัด แต่ไม่รู้จะข้าวผัดหมูหรืออะไนดี', '2024-04-02 18:14:53', 4, 2),
+(5, 'effwfwfd', 'gfbgfbgfbgbg', '2024-04-02 18:39:27', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -95,12 +91,12 @@ INSERT INTO `post` (`id`, `title`, `content`, `post_date`, `cat_id`, `user_id`) 
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `login` varchar(32) NOT NULL,
-  `password` varchar(64) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `gender` char(1) NOT NULL,
-  `email` varchar(32) NOT NULL,
-  `role` char(1) NOT NULL
+  `login` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `gender` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `role` char(1) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -108,12 +104,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `password`, `name`, `gender`, `email`, `role`) VALUES
-(1, 'araya', '0835317214', 'อารยา เมฆขาว', 'f', 'gade@gmail.com', 'm'),
-(2, 'gg', '0d5f9c12fd3d5dcb3d05947c61d78a7e337dbb17', 'gade m', 'm', 'mea@gmail.com', 'm'),
-(3, 'aunaun30', '21d7a074e543a8d056a347566a752f6a2b8d9989', 'Araya Mea.', 'm', 'aunaun@gmail.com', 'm'),
-(4, 'admin', '8dc9fa69ec51046b4472bb512e292d959edd2aef', 'แอด มิน', 'm', 'addmin@gmail.com', 'a'),
-(5, 'member', 'b54df48c4c77522382a5a3c2f0358573ad43746e', 'MemBer', 'm', 'member@gmail.com', 'm'),
-(6, 'Gade', '21d7a074e543a8d056a347566a752f6a2b8d9989', 'เกด', 'm', 'gade@gmail.com', 'm');
+(1, 'araya', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'อารยา เมฆขาว', 'm', 'araya@gmail.com', 'm'),
+(2, 'admin', '8dc9fa69ec51046b4472bb512e292d959edd2aef', 'แอดมิน', 'm', 'admin@gmail', 'a'),
+(3, 'aun', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'อารยา เมฆขาว', 'm', 'aun@gmail.com', 'm');
 
 --
 -- Indexes for dumped tables
@@ -148,22 +141,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `comment`
---
-ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

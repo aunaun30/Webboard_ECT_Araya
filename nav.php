@@ -12,7 +12,13 @@
                 <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
             </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="logout.php"><i class="bi bi-power"></i> ออกจากระบบ</a></li>
+          <?php 
+              if($_SESSION['role']=='a') {
+            ?>
+          <li><a class="dropdown-item" href="category.php"><i class="bi bi-bookmark-plus"></i> จัดการหมวดหมู่</a></li>
+          <li><a class="dropdown-item" href=""><i class="bi bi-person-gear"></i> จัดการผู้ใช้งาน</a></li>
+          <?php } ?>  
+          <li><a class="dropdown-item" href="logout.php"><i class="bi bi-power"></i> ออกจากระบบ</a></li>
           </ul>
             </li>
         <?php } ?>
